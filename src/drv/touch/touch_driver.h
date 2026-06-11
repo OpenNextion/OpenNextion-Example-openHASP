@@ -90,6 +90,9 @@ class BaseTouch {
 #elif TOUCH_DRIVER == 0x816
 #warning Building for CST816S
 #include "touch_driver_cst816.h"
+#elif TOUCH_DRIVER == 0x826
+#warning Building for CST826
+#include "touch_driver_cst826.h"
 #elif defined(LGFX_USE_V1) && defined(HASP_USE_LGFX_TOUCH)
 #warning Building for LovyanGFX Touch
 #include "touch_driver_lovyangfx.h"
