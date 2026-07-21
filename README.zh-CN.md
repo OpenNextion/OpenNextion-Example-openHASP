@@ -6,6 +6,8 @@
 
 <p align="center"><img src="docs/images/opennextion-openhasp-hero.jpg" alt="正在使用的 OpenNextion openHASP 面板" width="820"></p>
 
+https://github.com/user-attachments/assets/f0558cf5-25b8-4e8d-ab3c-28edd55e0f63
+
 将已支持的 OpenNextion ESP32-S3 触摸屏变成可配置的 MQTT 家庭自动化面板。烧录对应型号的固件、连接 Wi-Fi、配置 MQTT 后，即可通过设备网页和页面文件制作灯光、空调、媒体、场景等控制界面，并接入 Home Assistant。
 
 > 本项目基于 [openHASP](https://github.com/HASwitchPlate/openHASP) 适配 OpenNextion 硬件，并非 OpenNextion 或 Home Assistant 官方产品。
