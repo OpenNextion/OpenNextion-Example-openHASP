@@ -5,6 +5,8 @@
 
 <p align="center"><img src="docs/images/opennextion-openhasp-hero.jpg" alt="OpenNextion openHASP panel in use" width="820"></p>
 
+https://github.com/user-attachments/assets/f0558cf5-25b8-4e8d-ab3c-28edd55e0f63
+
 Turn a supported OpenNextion ESP32-S3 touchscreen into a configurable MQTT control panel for Home Assistant. Flash the matching firmware, connect the panel to Wi-Fi, configure MQTT, then use its web interface and page files to build controls for lights, climate, media, scenes, and other home-automation devices.
 
 > This is an OpenNextion hardware port of [openHASP](https://github.com/HASwitchPlate/openHASP). It is not an official OpenNextion or Home Assistant product.
