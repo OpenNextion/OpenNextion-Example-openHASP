@@ -3,11 +3,7 @@
 [![English](https://img.shields.io/badge/lang-English-blue)](./README.md)
 [![中文](https://img.shields.io/badge/lang-中文-red)](./README.zh-CN.md)
 
-<!-- MEDIA TODO — hero image
-Suggested path: docs/images/opennextion-openhasp-hero.jpg
-Provide: a clear 16:9 photo (at least 1600×900) of one or both supported panels powered on, ideally in a real Home Assistant use scene. Avoid showing passwords, broker addresses, or personal data.
-Display here: <p align="center"><img src="docs/images/opennextion-openhasp-hero.jpg" alt="OpenNextion openHASP panel in use" width="820"></p>
--->
+<p align="center"><img src="docs/images/opennextion-openhasp-hero.jpg" alt="OpenNextion openHASP panel in use" width="820"></p>
 
 Turn a supported OpenNextion ESP32-S3 touchscreen into a configurable MQTT control panel for Home Assistant. Flash the matching firmware, connect the panel to Wi-Fi, configure MQTT, then use its web interface and page files to build controls for lights, climate, media, scenes, and other home-automation devices.
 
@@ -70,11 +66,8 @@ On first boot, or after Wi-Fi settings are cleared, the panel creates a temporar
 
 The panel's web interface is where you check its status, configure MQTT, edit files, update firmware, and reset the device.
 
-<!-- MEDIA TODO — first-time Wi-Fi setup
-Suggested path: docs/images/opennextion-openhasp-wifi-setup.jpg
-Provide: a readable photo or screenshot of the panel's first-boot screen showing the QR code, temporary AP name, and Wi-Fi setup prompt. Blur or use test Wi-Fi credentials.
-Display here: <p align="center"><img src="docs/images/opennextion-openhasp-wifi-setup.jpg" alt="OpenNextion openHASP first-time Wi-Fi setup" width="620"></p>
--->
+<p align="center"><img src="docs/images/opennextion-openhasp-wifi-setup.jpg" alt="OpenNextion openHASP first-time Wi-Fi setup" width="620"></p>
+
 
 ### 4. Configure MQTT and Home Assistant
 
@@ -88,11 +81,7 @@ In the panel web interface, open **Settings → MQTT Settings** and set:
 
 Save the settings and wait for the panel to reconnect. If Home Assistant's MQTT integration uses the same broker, check **Settings → Devices & services → MQTT** for the panel and its discovered entities. If it does not appear, first confirm Wi-Fi and MQTT are connected on the panel's **Information** page.
 
-<!-- MEDIA TODO — Home Assistant result
-Suggested path: docs/images/opennextion-openhasp-home-assistant.jpg
-Provide: a Home Assistant screenshot showing the discovered panel or a dashboard that it controls. Remove private names, IP addresses, MQTT credentials, and location data.
-Display here: <p align="center"><img src="docs/images/opennextion-openhasp-home-assistant.jpg" alt="OpenNextion openHASP in Home Assistant" width="820"></p>
--->
+<p align="center"><img src="docs/images/opennextion-openhasp-home-assistant.png" alt="OpenNextion openHASP in Home Assistant" width="820"></p>
 
 ### 5. Create your first panel page
 

@@ -3,11 +3,8 @@
 [![English](https://img.shields.io/badge/lang-English-blue)](./README.md)
 [![中文](https://img.shields.io/badge/lang-中文-red)](./README.zh-CN.md)
 
-<!-- 图片待补充：顶部主图
-建议路径：docs/images/opennextion-openhasp-hero.jpg
-请提供：一张清晰的 16:9 实拍图（至少 1600×900），展示一台或两台已支持面板通电运行；最好能体现 Home Assistant 使用场景。请避免拍入密码、Broker 地址或个人信息。
-放入图片时使用：<p align="center"><img src="docs/images/opennextion-openhasp-hero.jpg" alt="正在使用的 OpenNextion openHASP 面板" width="820"></p>
--->
+
+<p align="center"><img src="docs/images/opennextion-openhasp-hero.jpg" alt="正在使用的 OpenNextion openHASP 面板" width="820"></p>
 
 将已支持的 OpenNextion ESP32-S3 触摸屏变成可配置的 MQTT 家庭自动化面板。烧录对应型号的固件、连接 Wi-Fi、配置 MQTT 后，即可通过设备网页和页面文件制作灯光、空调、媒体、场景等控制界面，并接入 Home Assistant。
 
@@ -70,11 +67,7 @@ pio run -e onx2432g028 -t upload
 
 设备网页可用于查看状态、配置 MQTT、编辑文件、更新固件和恢复出厂设置。
 
-<!-- 图片待补充：首次 Wi-Fi 配网
-建议路径：docs/images/opennextion-openhasp-wifi-setup.jpg
-请提供：一张可清晰看见二维码、临时热点名称和 Wi-Fi 设置提示的首次启动屏幕实拍或截图。请打码，或使用测试 Wi-Fi 凭据。
-放入图片时使用：<p align="center"><img src="docs/images/opennextion-openhasp-wifi-setup.jpg" alt="OpenNextion openHASP 首次 Wi-Fi 配网" width="620"></p>
--->
+<p align="center"><img src="docs/images/opennextion-openhasp-wifi-setup.jpg" alt="OpenNextion openHASP 首次 Wi-Fi 配网" width="620"></p>
 
 ### 4. 配置 MQTT 和 Home Assistant
 
@@ -88,11 +81,7 @@ pio run -e onx2432g028 -t upload
 
 保存设置并等待面板重新连接。若 Home Assistant 的 MQTT 集成使用相同 Broker，可在 **设置 → 设备与服务 → MQTT** 中查找面板及其自动发现的实体。若未出现，先在面板网页的 **Information** 页面确认 Wi-Fi 和 MQTT 已连接。
 
-<!-- 图片待补充：Home Assistant 接入结果
-建议路径：docs/images/opennextion-openhasp-home-assistant.jpg
-请提供：一张显示已发现面板，或显示该面板所控制仪表盘的 Home Assistant 截图。请移除私人设备名、IP 地址、MQTT 凭据和定位信息。
-放入图片时使用：<p align="center"><img src="docs/images/opennextion-openhasp-home-assistant.jpg" alt="Home Assistant 中的 OpenNextion openHASP" width="820"></p>
--->
+<p align="center"><img src="docs/images/opennextion-openhasp-home-assistant.png" alt="Home Assistant 中的 OpenNextion openHASP" width="820"></p>
 
 ### 5. 创建第一个面板页面
 
