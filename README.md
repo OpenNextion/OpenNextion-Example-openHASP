@@ -34,28 +34,35 @@ The current port supports the display, touch input, backlight, Wi-Fi, LittleFS, 
 
 ### 1. Get the correct firmware
 
-Release firmware will be published on [GitHub Releases](https://github.com/OpenNextion/OpenNextion-Example-openHASP/releases).
+Release firmware is available from [GitHub Releases](https://github.com/OpenNextion/OpenNextion-Example-openHASP/releases/tag/v0.7.0.1).
 
 | Device | Initial-flash firmware | OTA firmware |
 | --- | --- | --- |
-| ONX3248G035 V1.2 | To be added | To be added |
-| ONX2432G028 V1.3 | To be added | To be added |
+| ONX3248G035 V1.2 | `open_hasp_V0.7.0.1_merged_ONX3248G035.bin` | Not provided in `v0.7.0.1` |
+| ONX2432G028 V1.3 | `open_hasp_V0.7.0.1_merged_ONX2432G028.bin` | Not provided in `v0.7.0.1` |
 
-There are no release binaries yet. For now, build and upload the firmware from source as described in [Build from source](#build-from-source). When releases are available, use a complete initial-flash image for first setup, and use an OTA package only when it explicitly names your device model.
+The two release assets are full merged images for initial USB flashing at address `0x0`. They are not OTA packages. Only use the file that exactly matches your device model.
+
+| Firmware file | Size | SHA256 |
+| --- | ---: | --- |
+| `open_hasp_V0.7.0.1_merged_ONX3248G035.bin` | `1744288` bytes | `cccc91a8f43011706d2f1b65c973c84f190389d082f952a91a53aa460583a384` |
+| `open_hasp_V0.7.0.1_merged_ONX2432G028.bin` | `1744288` bytes | `c4cfe0de810d6b78a84286245f0dcf67d53a7a4e41b4b4845c666e21ec8a00ac` |
 
 ### 2. Flash the panel
 
-Connect the panel with a data-capable USB cable and upload firmware for its exact model. The current source-build commands are:
+Connect the panel with a data-capable USB cable and flash the full merged image for its exact model. Replace `<SERIAL_PORT>` with the serial device used by your operating system:
 
 ```sh
 # ONX3248G035 V1.2
-pio run -e onx3248g035 -t upload
+python -m esptool --chip esp32s3 -p <SERIAL_PORT> -b 460800 write_flash \
+  0x0 ./open_hasp_V0.7.0.1_merged_ONX3248G035.bin
 
 # ONX2432G028 V1.3
-pio run -e onx2432g028 -t upload
+python -m esptool --chip esp32s3 -p <SERIAL_PORT> -b 460800 write_flash \
+  0x0 ./open_hasp_V0.7.0.1_merged_ONX2432G028.bin
 ```
 
-If no serial port appears, try another USB cable or port first. If uploading cannot connect, put the board into download mode using its BOOT and Reset controls, then retry.
+If no serial port appears, try another USB cable or port first. If flashing cannot connect, hold **BOOT**, press and release **Reset**, release **BOOT**, and retry.
 
 ### 3. Connect the panel to Wi-Fi
 
@@ -98,7 +105,7 @@ Use Home Assistant automations or MQTT messages to update labels, icons, colors,
 | Check IP address, Wi-Fi, MQTT, and firmware details | **Information** in the panel web interface |
 | Change Wi-Fi, MQTT, display, or time settings | **Settings** in the panel web interface |
 | Back up or edit pages and images | **File Editor**; back up first |
-| Update firmware | **Firmware Update**, using only an OTA file explicitly made for this model |
+| Reinstall or update `v0.7.0.1` | Flash the matching full merged image over USB; this release does not include OTA firmware |
 | Start over | **Factory Reset**; this erases settings and internal files |
 
 ## Troubleshooting
@@ -151,7 +158,7 @@ Provide: one well-lit angled photo per model showing the panel fitted in its pri
 
 ## Build from source
 
-This section is for users who need firmware before release binaries are available, or who want to modify the project.
+This section is for users who want to modify the project or build and upload firmware from source.
 
 1. Install [PlatformIO](https://platformio.org/) and clone this repository with its submodules:
 

@@ -35,28 +35,35 @@ https://github.com/user-attachments/assets/f0558cf5-25b8-4e8d-ab3c-28edd55e0f63
 
 ### 1. 获取正确的固件
 
-发布固件将放在 [GitHub Releases](https://github.com/OpenNextion/OpenNextion-Example-openHASP/releases) 页面。
+发布固件可从 [GitHub Releases](https://github.com/OpenNextion/OpenNextion-Example-openHASP/releases/tag/v0.7.0.1) 下载。
 
 | 设备 | 首次完整刷写固件 | OTA 固件 |
 | --- | --- | --- |
-| ONX3248G035 V1.2 | 待补充 | 待补充 |
-| ONX2432G028 V1.3 | 待补充 | 待补充 |
+| ONX3248G035 V1.2 | `open_hasp_V0.7.0.1_merged_ONX3248G035.bin` | `v0.7.0.1` 未提供 |
+| ONX2432G028 V1.3 | `open_hasp_V0.7.0.1_merged_ONX2432G028.bin` | `v0.7.0.1` 未提供 |
 
-当前尚未提供 Release 固件，请先按[从源码构建](#从源码构建)完成编译和 USB 烧录。Release 发布后，首次使用应选择完整初始刷写包；仅在 OTA 文件明确标注适用设备型号时才使用 OTA 更新。
+这两个 Release 附件均为从地址 `0x0` 进行首次 USB 烧录的完整合并镜像，并非 OTA 升级包。请只使用与设备型号完全匹配的文件。
+
+| 固件文件 | 大小 | SHA256 |
+| --- | ---: | --- |
+| `open_hasp_V0.7.0.1_merged_ONX3248G035.bin` | `1744288` 字节 | `cccc91a8f43011706d2f1b65c973c84f190389d082f952a91a53aa460583a384` |
+| `open_hasp_V0.7.0.1_merged_ONX2432G028.bin` | `1744288` 字节 | `c4cfe0de810d6b78a84286245f0dcf67d53a7a4e41b4b4845c666e21ec8a00ac` |
 
 ### 2. 烧录面板
 
-用支持数据传输的 USB 线连接面板，并为准确的设备型号上传固件。当前可使用以下源码构建命令：
+用支持数据传输的 USB 线连接面板，并烧录与设备型号完全匹配的完整合并镜像。请将 `<SERIAL_PORT>` 替换为操作系统中的实际串口设备：
 
 ```sh
 # ONX3248G035 V1.2
-pio run -e onx3248g035 -t upload
+python -m esptool --chip esp32s3 -p <SERIAL_PORT> -b 460800 write_flash \
+  0x0 ./open_hasp_V0.7.0.1_merged_ONX3248G035.bin
 
 # ONX2432G028 V1.3
-pio run -e onx2432g028 -t upload
+python -m esptool --chip esp32s3 -p <SERIAL_PORT> -b 460800 write_flash \
+  0x0 ./open_hasp_V0.7.0.1_merged_ONX2432G028.bin
 ```
 
-若电脑未出现串口设备，先尝试更换 USB 线或 USB 接口。若上传工具无法连接，请使用面板的 BOOT 与 Reset 按键进入下载模式后重试。
+若电脑未出现串口设备，先尝试更换 USB 线或 USB 接口。若烧录工具无法连接，请按住 **BOOT**，短按并松开 **Reset**，再松开 **BOOT** 后重试。
 
 ### 3. 连接面板到 Wi-Fi
 
@@ -98,7 +105,7 @@ pio run -e onx2432g028 -t upload
 | 查看 IP、Wi-Fi、MQTT 与固件信息 | 设备网页的 **Information** |
 | 修改 Wi-Fi、MQTT、显示或时间设置 | 设备网页的 **Settings** |
 | 备份或编辑页面、图片 | **File Editor**；先备份 |
-| 更新固件 | **Firmware Update**；仅使用明确适用于当前型号的 OTA 文件 |
+| 重新安装或更新 `v0.7.0.1` | 通过 USB 烧录对应型号的完整合并镜像；此版本未提供 OTA 固件 |
 | 重新开始 | **Factory Reset**；会清除设置和内部文件 |
 
 ## 常见问题
@@ -151,7 +158,7 @@ git submodule update --init --recursive
 
 ## 从源码构建
 
-本节适用于 Release 固件尚未提供时，或需要修改项目的用户。
+本节适用于需要修改项目，或希望自行构建并上传固件的用户。
 
 1. 安装 [PlatformIO](https://platformio.org/)，并带子模块克隆仓库：
 
